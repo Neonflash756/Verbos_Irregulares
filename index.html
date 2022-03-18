@@ -137,10 +137,11 @@
         }
 
         function compruebaVerbo(){
-            var  
-            if(document.getElementById("caja").innerHTML == verbos[verboElegido][tiempoAAdivinar]){
-                $('#botonComprueba').hide();
-                $('#botonAcierto').show();
+            const verboCorrecto = verbos[verboElegido][tiempoAAdivinar];
+            var verboLeido = document.getElementById('caja').value;
+            if(verboCorrecto == verboLeido){
+                document.getElementById('botonResultado').classList.add('btn-success');
+                document.getElementById('botonResultado').innerText = 'correct'
             }
             else{
                 $('#botonComprueba').hide();
