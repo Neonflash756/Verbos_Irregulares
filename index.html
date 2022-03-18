@@ -50,7 +50,7 @@
 
     <div id="parte2" class="container">
         <div class="row">
-            <button type="button" class="btn btn-lg btn-primary" disabled>Nivel:</button>
+            <button type="button" class="btn btn-lg btn-primary" disabled></button>
         </div>
 
         <div class="row">
@@ -60,33 +60,121 @@
         <div class="row">
             <button type="button" class="btn btn-lg btn-primary" disabled></button>
         </div>
-        
+    
         <div class="row">
             <button type="button" class="btn btn-lg btn-primary" disabled></button>
         </div>
 
+        <div class="row">
+            <button id="castellano" class="btn btn-secondary btn-lg" disabled></button>
+        </div>
+
+        <div class="text-center">
+            <div class="d-grid gap-2 col-12 mx-auto">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button id="boton1"  class="btn btn-primary">ergeqrg</button>
+                    <button id="boton2"  class="btn btn-primary">qrgqgg</button>
+                    <button id="boton3"  class="btn btn-primary">q3g3gqeg</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button id="botonComprueba" class="btn btn-info" type="button" onclick="compruebaVerbo()">Comprueba</button>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button id="botonFallo" type="button" class="btn btn-danger">Incorrecto</button>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button id="botonAcierto" type="button" class="btn btn-success">Correcto</button>
+        </div>
+        <br>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-info" type="button" onclick="showPalabras()">Cambia de Nivel:</button>
+        </div>
+        <br>
+        <div id="numeroPalabras">
+            <div class="text-center">
+                <div class="d-inline-block">
+                    <div class="btn-toolbar mx-auto" role="toolbar">
+                        <div class="btn-group" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-info" onclick="valorNivel(10)">10</button>
+                            <button type="button" class="btn btn-info" onclick="valorNivel(20)">20</button>
+                            <button type="button" class="btn btn-info" onclick="valorNivel(30)">30</button>
+                            <button type="button" class="btn btn-info" onclick="valorNivel(40)">40</button>
+                            <button type="button" class="btn btn-info" onclick="valorNivel(50)">50</button>
+                            <button type="button" class="btn btn-info" onclick="valorNivel(60)">60</button>
+                            <button type="button" class="btn btn-info" onclick="valorNivel(70)">70</button>
+                            <button type="button" class="btn btn-info" onclick="valorNivel(80)">80</button>
+                            <button type="button" class="btn btn-info" onclick="valorNivel(140)">140</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
     </div>
 
     <script src="Js/listaVerbos.js"></script>
-    <script>
-        console.log(verbos[2][3])
-    </script>
-
     <script src="Js/jquery.js"></script>
-    <script src="Js/jquery-3.6.0.min.js"></script>
-    <script src="Js/bootstrap.min.js"></script>
+    <script src="Js/jquery-ui.min.js"></script>
     
     <script>
         $('#parte1').show();
         $('#parte2').hide();
-    </script>
+        $('#numeroPalabras').hide();
+        $('#botonFallo').hide();
+        $('#botonAcierto').hide();
 
-    <script>
+        function showPalabras(){
+            $('#numeroPalabras').show();
+        }
+        
         function valorNivel(num){
             $('#parte1').hide();
             $('#parte2').show();
-            $
         }
+
+        function compruebaVerbo(){
+            //if(document.getElementById("caja") != verboElegido){
+                $('#botonComprueba').hide();
+                $('#botonFallo').show();
+            //}
+            //else{
+               // $('#botonComprueba').hide();
+                //$('#botonAcierto').show();
+            //} 
+        }  
+
+        function eligeVerbo(){
+            var verboElegido = Math.floor( Math.random() * verbos.length);
+
+            var tiempoAAdivinar = Math.floor( Math.random() * 3);
+            
+            document.getElementById("castellano").innerHTML = verbos[verboElegido][3];
+
+            if(tiempoAAdivinar == 0){
+                document.getElementById("boton1").innerHTML = '<input id="caja" class="form-control form-sm">';
+            }
+            else{
+                document.getElementById("boton1").innerHTML = verbos[verboElegido][0];
+            }
+
+            if(tiempoAAdivinar == 1){
+                document.getElementById("boton2").innerHTML = '<input id="caja" class="form-control form-sm">';
+            }
+            else{
+                document.getElementById("boton2").innerHTML = verbos[verboElegido][1];
+            }
+
+            if(tiempoAAdivinar == 2){
+                document.getElementById("boton3").innerHTML = '<input id="caja" class="form-control form-sm">';
+            }
+            else{
+                document.getElementById("boton3").innerHTML = verbos[verboElegido][2];
+            }
+        }
+        eligeVerbo();
     </script>
+
 </body>
 </html>
