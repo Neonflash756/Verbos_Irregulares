@@ -62,7 +62,7 @@
         </div>
     
         <div class="row">
-            <button type="button" class="btn btn-lg btn-primary" disabled></button>
+            <button id="marcador" type="button" class="btn btn-lg btn-primary" disabled></button>
         </div>
 
         <div class="row">
@@ -111,13 +111,17 @@
     <script src="Js/listaVerbos.js"></script>
     <script src="Js/jquery.js"></script>
     <script src="Js/jquery-ui.min.js"></script>
-    
+    <script src="https://kit.fontawesome.com/7d3ccb2255.js" crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
     <script>
         $('#parte1').show();
         $('#parte2').hide();
         $('#numeroPalabras').hide();
         var verboElegido = Math.floor( Math.random() * verbos.length);
         var tiempoAAdivinar = Math.floor( Math.random() * 3);
+        var nivel = window.location.hash.substring(1);
+        var marcador = 0;
 
         function showPalabras(){
             $('#numeroPalabras').show();
@@ -133,12 +137,26 @@
             var verboLeido = document.getElementById('caja').value;
             if(verboCorrecto == verboLeido){
                 document.getElementById('botonComprueba').classList.add('btn-success');
-                document.getElementById('botonComprueba').innerText = 'Correcto'
+                document.getElementById('botonComprueba').innerText = 'Correcto';
+
+                marcador++;
+                if(nivel <=30){
+                $("#marcador").append('<i class="fas fa-star"></i>');        
+                } else if(nivel <=60){
+                $("#marcador").append('<i class="fa fa-flash"></i>');
+                } else if(nivel <= 80){
+                $("#marcador").append('<i class="fa fa-mortar-board"</i>');
+                } else if(nivel <= 140){
+                $("#marcador").append('<i class="fas fa-ghost"></i>');
+                }
             }
             else{
+                marcador--;
                 document.getElementById('botonComprueba').classList.add('btn-danger');
                 document.getElementById('botonComprueba').innerText = verbos[verboElegido][tiempoAAdivinar];
-            } 
+            }
+            
+            
         }  
 
         function eligeVerbo(){
@@ -168,6 +186,7 @@
         }
         eligeVerbo();
     </script>
+    
 
 </body>
 </html>
