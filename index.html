@@ -32,15 +32,15 @@
                 <div class="d-inline-block">
                     <div class="btn-toolbar mx-auto" role="toolbar">
                         <div class="btn-group" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-info" onclick="valorNivel(10)">10</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(20)">20</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(30)">30</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(40)">40</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(50)">50</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(60)">60</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(70)">70</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(80)">80</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(140)">140</button>
+                            <button id="10" type="button" class="btn btn-info" onclick="valorNivel(this.id)">10</button>
+                            <button id="20" type="button" class="btn btn-info" onclick="valorNivel(this.id)">20</button>
+                            <button id="30" type="button" class="btn btn-info" onclick="valorNivel(this.id)">30</button>
+                            <button id="40" type="button" class="btn btn-info" onclick="valorNivel(this.id)">40</button>
+                            <button id="50" type="button" class="btn btn-info" onclick="valorNivel(this.id)">50</button>
+                            <button id="60" type="button" class="btn btn-info" onclick="valorNivel(this.id)">60</button>
+                            <button id="70" type="button" class="btn btn-info" onclick="valorNivel(this.id)">70</button>
+                            <button id="80" type="button" class="btn btn-info" onclick="valorNivel(this.id)">80</button>
+                            <button id="140" type="button" class="btn btn-info" onclick="valorNivel(this.id)">140</button>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
 
     <div id="parte2" class="container">
         <div class="row">
-            <button type="button" class="btn btn-lg btn-primary" disabled></button>
+            <button id="nivel" type="button" class="btn btn-lg btn-primary" disabled></button>
         </div>
 
         <div class="row">
@@ -92,15 +92,15 @@
                 <div class="d-inline-block">
                     <div class="btn-toolbar mx-auto" role="toolbar">
                         <div class="btn-group" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-info" onclick="valorNivel(10)">10</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(20)">20</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(30)">30</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(40)">40</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(50)">50</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(60)">60</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(70)">70</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(80)">80</button>
-                            <button type="button" class="btn btn-info" onclick="valorNivel(140)">140</button>
+                            <button id="10" type="button" class="btn btn-info" onclick="valorNivel(this.id)">10</button>
+                            <button id="20" type="button" class="btn btn-info" onclick="valorNivel(this.id)">20</button>
+                            <button id="30" type="button" class="btn btn-info" onclick="valorNivel(this.id)">30</button>
+                            <button id="40" type="button" class="btn btn-info" onclick="valorNivel(this.id)">40</button>
+                            <button id="50" type="button" class="btn btn-info" onclick="valorNivel(this.id)">50</button>
+                            <button id="60" type="button" class="btn btn-info" onclick="valorNivel(this.id)">60</button>
+                            <button id="70" type="button" class="btn btn-info" onclick="valorNivel(this.id)">70</button>
+                            <button id="80" type="button" class="btn btn-info" onclick="valorNivel(this.id)">80</button>
+                            <button id="140" type="button" class="btn btn-info" onclick="valorNivel(this.id)">140</button>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
         $('#numeroPalabras').hide();
         var verboElegido = Math.floor( Math.random() * verbos.length);
         var tiempoAAdivinar = Math.floor( Math.random() * 3);
-        var nivel = window.location.hash.substring(1);
+        var nivel = 0;
         var marcador = 0;
         var jugando = 0;
 
@@ -128,9 +128,11 @@
             $('#numeroPalabras').show();
         }
         
-        function valorNivel(num){
+        function valorNivel(id){
             $('#parte1').hide();
             $('#parte2').show();
+            nivel = parseInt(id, 10);
+            document.getElementById('nivel').innerHTML = "Level: " + nivel;
         }
 
         function compruebaVerbo(){
