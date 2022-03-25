@@ -80,7 +80,7 @@
         </div>
         <br>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <button id="botonComprueba" class="btn btn-info" type="button" onclick="compruebaVerbo()">Comprueba</button>
+            <button id="botonComprueba" class="btn btn-primary" type="button" onclick="compruebaVerbo()">Comprueba</button>
         </div>
         <br>
         <div class="d-grid gap-2 col-6 mx-auto">
@@ -133,6 +133,8 @@
             $('#parte2').show();
             nivel = parseInt(id, 10);
             document.getElementById('nivel').innerHTML = "Level: " + nivel;
+            eligeVerbo();
+            marcador = 0;
         }
 
         function compruebaVerbo(){
@@ -143,8 +145,7 @@
                 var verboLeido = document.getElementById('caja').value;
                 if(verboCorrecto == verboLeido){
                     document.getElementById('botonComprueba').classList.add('btn-success');
-                    document.getElementById('botonComprueba').innerText = 'Correcto';
-
+                    document.getElementById('botonComprueba').innerText = "Correcto";
                     marcador++;
                     if(nivel <=30){
                     $("#marcador").append('<i class="fas fa-star"></i>');        
@@ -160,12 +161,14 @@
                     marcador = 0;
                     document.getElementById('botonComprueba').classList.add('btn-danger');
                     document.getElementById('botonComprueba').innerText = verbos[verboElegido][tiempoAAdivinar];
+                    document.getElementById("marcador").innerHTML = "";
                 }
             }
             else{
             jugando = 0;
             eligeVerbo();
-            document.getElementById('botonComprueba').classList.add('btn-info');
+            document.getElementById('botonComprueba').classList.remove('btn-success');
+            document.getElementById('botonComprueba').classList.remove('btn-danger');
             document.getElementById('botonComprueba').innerText = 'Comprueba';
             }
         }  
